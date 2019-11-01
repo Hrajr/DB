@@ -1,0 +1,22 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<div class="row" style="margin:auto; width:50%; padding:10px;">
+    <div class="col-md-3" style="margin:auto; width:50%; padding:10px;">
+        <form class="login-form" asp-action="LoginSubmit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <span asp-validation-for="Username" class="text-danger"></span>
+            <input type="text" onfocus="this.value=''" name="Username" asp-for="Username" value="Username" style="margin-bottom:10px;" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <input type="password" onfocus="this.value=''" name="Password" asp-for="Password" value="Password" style="margin-bottom:20px;" />
+            <center>
+                <button type="submit" class="btn-dark" style="margin-bottom:10px;">Login</button>
+                <br /><a asp-action="Registration" asp-controller="Home">Create account!</a>
+            </center>
+        </form>
+    </div>
+</div>

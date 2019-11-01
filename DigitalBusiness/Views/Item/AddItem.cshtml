@@ -1,0 +1,64 @@
+﻿@model ReferenceViewModel
+@{
+    ViewData["Title"] = "New reference";
+}
+
+<h1>New reference</h1>
+
+<div class="row" style="margin:auto; width:50%; padding:10px;">
+    <div class="col-lg-12" style="margin:auto; width:50%; padding:10px;">
+        <form class="login-form" asp-action="SubmitReference">
+            <div class="form-group">
+                <input class="form-control" type="text" name="CompanyName" asp-for="SingleReference.CompanyName" value="CompanyName" style="margin-bottom:10px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="ContactName" asp-for="SingleReference.ContactName" value="ContactName" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="Address" asp-for="SingleReference.Address" value="Address" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="Zipcode" asp-for="SingleReference.Zipcode" value="Zipcode" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="Place" asp-for="SingleReference.Place" value="Place" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="Country" asp-for="SingleReference.Country" value="Country" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="PhoneNumber" asp-for="SingleReference.PhoneNumber" value="PhoneNumber" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="Email" asp-for="SingleReference.Email" value="Email" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="Bank" asp-for="SingleReference.Bank" value="Bank" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="BIC" asp-for="SingleReference.BIC" value="BIC" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="IBAN" asp-for="SingleReference.IBAN" value="IBAN" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="KvK" asp-for="SingleReference.KvK" value="KvK" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="VAT" asp-for="SingleReference.VAT" value="VAT" style="margin-bottom:20px;" />
+            </div>
+            <div class="form-group">
+                <p>Doubtfullness</p>
+                <select class="browser-default" name="Doubtfull" asp-for="SingleReference.Doubtfull">
+                    <option value="true">Doubtfull</option>
+                    <option value="false">Trustfull</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" name="Note" asp-for="SingleReference.Note" value="Note" style="margin-bottom:20px;" />
+            </div>
+            <button type="submit" onclick="ready()" class="btn-dark" style="margin-bottom:10px;">Add reference</button>
+        </form>
+    </div>
+</div>
+

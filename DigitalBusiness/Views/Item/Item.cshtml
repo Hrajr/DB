@@ -1,0 +1,64 @@
+﻿@model ReferenceViewModel
+@{
+    ViewData["Title"] = "All references";
+}
+
+<h1>All items</h1> 
+
+<button class="btn btn-primary" asp-action="AddItem">Add Item</button>
+
+<form class="container" asp-controller="Item">
+@for (var i = 0; i < Model.ListOfItems.Count; i++)
+{
+    <div class="panel panel-primary">
+
+        <div class="panel-heading">Item: @Model.ListOfItems[i].ItemID</div>
+        <div class="panel-body">
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Item ID:</label>
+                        <input type="text" class="form-control" name="itemID" id="itemID" value="@Model.ListOfItems[i].ItemID">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Description:</label>
+                        <input type="text" class="form-control" name="Description" id="Description" value="@Model.ListOfItems[i].Description">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">VAT:</label>
+                        <input type="text" class="form-control" name="VAT" id="VAT" value="@Model.ListOfItems[i].VAT">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Price:</label>
+                        <input type="text" class="form-control" name="Price" id="Price" value="@Model.ListOfItems[i].Price">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Amount:</label>
+                        <input type="text" class="form-control" name="Amount" id="Amount" value="@Model.ListOfItems[i].Amount">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">InStock:</label>
+                        <input type="checkbox" class="form-control" name="InStock" id="InStock" value="@Convert.ToBoolean(Model.ListOfItems[i].InStock)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <center>
+            <button class="btn btn-info" onclick="" asp-action="OpenItem" asp-route-id="@Model.ListOfItems[i].ItemID">Edit</button>
+            <button class="btn btn-danger" asp-action="RemoveItem" asp-route-id="@Model.ListOfItems[i].ItemID">Remove item</button><br/><br/>
+        </center>
+    </div><br/><br/>
+}
+</form>

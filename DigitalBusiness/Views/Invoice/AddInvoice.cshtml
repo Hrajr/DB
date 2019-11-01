@@ -1,0 +1,142 @@
+﻿@using Models
+@model ReferenceViewModel
+@{
+    ViewData["Title"] = "New reference";
+}
+
+<h1>New reference</h1>
+
+<div class="row" style="margin:auto; width:50%; padding:10px;">
+    <div class="col-lg-12" style="margin:auto; width:50%; padding:10px;">
+        <form class="login-form" asp-action="SubmitInvoice">
+            <div class="form-group">
+                <p>Invoice type:</p>
+                <select class="custom-select-lg" id="InvoiceType" onchange="CheckInvoiceType(this)" name="InvoiceType" asp-for="SingleInvoice.TypeOfInvoice">
+                    @foreach (var item in Enum.GetNames(typeof(InvoiceType)))
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group" id="Purchase" style="display: block;">
+                <p>Dit is een inkoop Factuur</p>
+                <div class="form-group">
+                    <input name="Invoicenumber" value="Invoicenumber" />
+                </div>
+                <div class="form-group">
+                    <p>Select the supplier:</p>
+                    <select class="custom-select-lg" id="Supplier" style="width: 300px; height: auto;" name="Supplier" asp-for="ListOfReferences">
+                        @foreach (var supplier in Model.ListOfReferences)
+                        {
+                            <option value="@supplier.ID">@supplier.CompanyName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input id="datepicker" name="Invoicedate" value="Invoicedate" />
+                </div>
+            </div>
+
+            <div class="form-group" id="Sale" style="display: none;">
+                <p>Dit is een verkoopFactuur</p>
+                <div class="form-group">
+                    <input value="name" />
+                </div>
+                <div class="form-group">
+                    <input value="more name" />
+                </div>
+            </div>
+
+            <div class="form-group" id="CR" style="display: none;">
+                <p>Dit is een Credit Nota</p>
+            </div>
+
+            <button type="submit" onclick="ready()" class="btn-dark" style="margin-bottom:10px;">Add reference</button>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Schedule an Appointment</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">First Name</label>
+                        <input type="text" class="form-control" name="fname" id="fname">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Last Name</label>
+                        <input type="text" class="form-control" name="lname" id="lname">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Email</label>
+                        <input type="text" class="form-control" name="email" id="email">
+                    </div>
+                </div>
+                <div class='col-md-6'>
+                    <div class="form-group">
+                        <label class="control-label">Appointment Time</label>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    function CheckInvoiceType(nameSelect) {
+        if (nameSelect) {
+            SelectedType = document.getElementById("InvoiceType");
+            var SelectedOption = SelectedType.options[SelectedType.selectedIndex].value;
+            console.log(SelectedOption);
+
+            if (SelectedOption == "Sale") {
+                document.getElementById("Sale").style.display = "block";
+                document.getElementById("Purchase").style.display = "none";
+                document.getElementById("CR").style.display = "none";
+            }
+            else if (SelectedOption == "CreditNote") {
+                document.getElementById("Sale").style.display = "none";
+                document.getElementById("Purchase").style.display = "none";
+                document.getElementById("CR").style.display = "block";
+            }
+            else if (SelectedOption == "Purchase") {
+                document.getElementById("Sale").style.display = "none";
+                document.getElementById("Purchase").style.display = "block";
+                document.getElementById("CR").style.display = "none";
+            }
+            else {
+                document.getElementById("Sale").style.display = "none";
+                document.getElementById("CR").style.display = "none";
+            }
+        }
+        else {
+            document.getElementById("Sale").style.display = "none";
+            document.getElementById("CR").style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    $( function() {
+        $( "#datepicker" ).datepicker();
+    } );
+</script>

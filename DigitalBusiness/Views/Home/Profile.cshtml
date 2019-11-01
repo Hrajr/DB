@@ -1,0 +1,15 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h1>Profile</h1>
+
+<div class="col-lg-6">
+    <p>Name: @Model.ActiveUser.FullName()</p>
+    <p>Address: @Model.ActiveUser.Address</p>
+    <p>Zip/Place: @Model.ActiveUser.Zipcode @Model.ActiveUser.Place</p>
+    <p>Phonenumb.: @Model.ActiveUser.Phone</p>
+    <p>Email: @Model.ActiveUser.Email</p>
+</div>
+
