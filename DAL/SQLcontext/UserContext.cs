@@ -1,7 +1,7 @@
-﻿using Models;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using DTO;
 
 namespace DAL
 {
@@ -9,7 +9,7 @@ namespace DAL
     {
         private readonly DB Data = new DB();
 
-        public User Login(User user)
+        public UserDTO Login(UserDTO user)
         {
             using (SqlConnection conn = new SqlConnection(Data.con.ConnectionString))
             {
@@ -40,8 +40,9 @@ namespace DAL
             return user;
         }
 
-        public User GetUserInfo(User user)
+        public UserDTO GetUserInfo(string id)
         {
+            UserDTO userInfo = new UserDTO();
             using (SqlConnection conn = new SqlConnection(Data.con.ConnectionString))
             {
                 try
@@ -50,20 +51,20 @@ namespace DAL
 
                     SqlCommand command = new SqlCommand("GetUserInfo", conn);
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add(new SqlParameter("@UserID", user.UserID));
+                    command.Parameters.Add(new SqlParameter("@UserID", id));
 
                     var reader = command.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        user.Username = reader["Username"].ToString();
-                        user.Firstname = reader["Firstname"].ToString();
-                        user.Lastname = reader["Lastname"].ToString();
-                        user.Address = reader["Address"].ToString();
-                        user.Zipcode = reader["Zipcode"].ToString();
-                        user.Place = reader["Place"].ToString();
-                        user.Phone = reader["Phone"].ToString();
-                        user.Email = reader["Email"].ToString();
+                        userInfo.Username = reader["Username"].ToString();
+                        userInfo.Firstname = reader["Firstname"].ToString();
+                        userInfo.Lastname = reader["Lastname"].ToString();
+                        userInfo.Address = reader["Address"].ToString();
+                        userInfo.Zipcode = reader["Zipcode"].ToString();
+                        userInfo.Place = reader["Place"].ToString();
+                        userInfo.Phone = reader["Phone"].ToString();
+                        userInfo.Email = reader["Email"].ToString();
                     }
                     reader.Close();
                 }
@@ -72,10 +73,10 @@ namespace DAL
                     conn.Close();
                 }
             }
-            return user;
+            return userInfo;
         }
 
-        public bool AdminCheck(User user)
+        public bool AdminCheck(string id)
         {
             bool isAdmin = false;
 
@@ -86,7 +87,7 @@ namespace DAL
                     conn.Open();
                     SqlCommand command = new SqlCommand("AdminCheck", conn);
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.Add(new SqlParameter("@UserID", user.UserID));
+                    command.Parameters.Add(new SqlParameter("@UserID", id));
 
                     var reader = command.ExecuteReader();
 
@@ -104,7 +105,7 @@ namespace DAL
             return isAdmin;
         }
 
-        public bool Registration(User user)
+        public bool Registration(UserDTO user)
         {
             bool RegistrationSuccess = false;
             using (SqlConnection conn = new SqlConnection(Data.con.ConnectionString))

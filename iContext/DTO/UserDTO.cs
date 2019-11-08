@@ -1,4 +1,5 @@
 ﻿using System;
+using Models;
 
 namespace DTO
 {
@@ -16,5 +17,16 @@ namespace DTO
         public string Email { get; set; }
         public bool Admin { get; set; }
         public string Salt { get; set; }
+
+        public UserDTO(string username, string password, string salt)
+        {
+            Username = username;
+            Password = password;
+            Salt = salt;
+        }
+
+        public UserDTO()
+        {
+        }
     }
 }

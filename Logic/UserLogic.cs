@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using DTO;
 
 namespace Logic
 {
@@ -21,13 +22,13 @@ namespace Logic
 
         public bool Login(User user)
         {
-            bool Success = false;
-            string Input = user.Password;
-            user = _context.Login(user);
-            user.Password = Hashing.GetHash(Input, user.Salt);            
-            if (HashValid(Input, user.Salt, user.Password))
-            { Success = true; }
-            return Success;
+            var success = false;
+            var input = user.Password;
+            var loggedInUser = _context.Login(new UserDTO(user.Username, user.Password, user.Salt));
+            loggedInUser.Password = Hashing.GetHash(input, user.Salt);            
+            if (HashValid(input, loggedInUser.Salt, loggedInUser.Password))
+            { success = true; }
+            return success;
         }
 
         private static bool HashValid(string Input, string Salt, string Password)
@@ -38,12 +39,12 @@ namespace Logic
 
         public bool AdminCheck(User user)
         {
-            return _context.AdminCheck(user);
+            return _context.AdminCheck(user.UserID);
         }
 
-        public User GetUserInfo(User user)
+        public User GetUserInfo(UserDTO user)
         {
-            user = _context.GetUserInfo(user);
+            user = _context.GetUserInfo(user.UserID);
             user = InfoDecryptor(user);
             return user;
         }
@@ -55,7 +56,7 @@ namespace Logic
             return _context.Registration(user);
         }
 
-        private User InfoEncryptor(User user)
+        private UserDTO InfoEncryptor(UserDTO user)
         {
             user.Firstname = Crypto.Encrypt(user.Firstname);
             user.Lastname = Crypto.Encrypt(user.Lastname);
@@ -67,7 +68,7 @@ namespace Logic
             return user;
         }
 
-        private User InfoDecryptor(User user)
+        private UserDTO InfoDecryptor(UserDTO user)
         {            
             user.Firstname = Crypto.Decrypt(user.Firstname);
             user.Lastname = Crypto.Decrypt(user.Lastname);
