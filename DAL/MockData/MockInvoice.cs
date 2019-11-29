@@ -1,7 +1,8 @@
-﻿using System;
+﻿using DAL.DTO;
+using Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Models;
 
 namespace DAL.Mock
 {
@@ -10,14 +11,14 @@ namespace DAL.Mock
         public static MockReference TestMockReference = new MockReference();
         public static MockOrderList TestMockOrderList = new MockOrderList();
         public static MockUser TestMockUser = new MockUser();
-        public Invoice InvoiceMock = new Invoice
+        public InvoiceDTO InvoiceMock = new InvoiceDTO
         {
             InvoiceNumber = "TestInvoiceNumber",
             TypeOfInvoice = InvoiceType.Purchase,
             InvoiceReference = TestMockReference.ReferenceMock,
             InvoiceOrder = TestMockOrderList.OrderListMock,
             InvoiceDate = DateTime.Now.Date,
-            PayementDate = DateTime.Now.Date.AddDays(3),
+            PaymentDate = DateTime.Now.Date.AddDays(3),
             InvoiceUser = TestMockUser.UserMock,
             PaymentStatus = false
         };

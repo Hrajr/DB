@@ -1,18 +1,18 @@
 ﻿using System;
-using Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Logic;
 
 namespace DigitalBusiness.Models
 {
     public class ReferenceViewModel
     {
-        public List<Reference> ListOfReferences = new List<Reference>();
-        public List<Invoice> ListOfInvoices = new List<Invoice>();
+        public List<ReferenceLogic> ListOfReferences = new List<ReferenceLogic>();
+        public List<InvoiceLogic> ListOfInvoices = new List<InvoiceLogic>();
         public List<Item> ListOfItems = new List<Item>();
-        public Reference SingleReference = new Reference();
-        public Invoice SingleInvoice = new Invoice();
+        public ReferenceLogic SingleReference = new ReferenceLogic();
+        public InvoiceLogic SingleInvoice = new InvoiceLogic();
         public Item SingleItem = new Item();
     }
 }

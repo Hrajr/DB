@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using DTO;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ namespace DAL.Mock
 {
     public class MockItems
     {
-        public List<Item> ItemsMock = new List<Item>()
+        public List<ItemDTO> ItemsMock = new List<ItemDTO>()
         {
             //new Item{ItemID = "TestItemID1", VAT = 21, Price = 15.80, InStock = true,
             //Description = "This is a mockItem description for testing purpose"},

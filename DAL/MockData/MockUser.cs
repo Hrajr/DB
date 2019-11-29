@@ -1,11 +1,12 @@
-﻿using Models;
+﻿using DTO;
+using Models;
 using System;
 
 namespace DAL
 {
     public class MockUser
     {
-        public User UserMock = new User()
+        public UserDTO UserMock = new UserDTO()
         {
             UserID = "TestID",
             Username = "TestUsername",

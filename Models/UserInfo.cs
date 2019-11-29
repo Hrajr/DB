@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
-    public class User
+    public class UserInfo
     {
         public string UserID { get; set; }
         [StringLength(50, MinimumLength = 8, ErrorMessage = "The lenght of your username should be between 8 and 50 characters!")]

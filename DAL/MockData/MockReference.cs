@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using DAL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +7,9 @@ namespace DAL.Mock
 {
     public class MockReference
     {
-        public List<Reference> ListReferences = new List<Reference>();
+        public List<ReferenceDTO> ListReferences = new List<ReferenceDTO>();
         
-        public List<Reference> GetAllReferences()
+        public List<ReferenceDTO> GetAllReferences()
         {
             ListReferences.Add(ReferenceMock);
             ListReferences.Add(ReferenceMock2);
@@ -17,7 +17,7 @@ namespace DAL.Mock
             return ListReferences;
         }
 
-        public Reference ReferenceMock = new Reference
+        public ReferenceDTO ReferenceMock = new ReferenceDTO
         {
             CompanyName = "TestCompany",
             ContactName = "TestContactName",
@@ -37,7 +37,7 @@ namespace DAL.Mock
             Note = "This is a test company for testing purpose only"
         };
 
-        public Reference ReferenceMock2 = new Reference
+        public ReferenceDTO ReferenceMock2 = new ReferenceDTO
         {
             CompanyName = "TestCompany2",
             ContactName = "TestContactName2",
@@ -57,7 +57,7 @@ namespace DAL.Mock
             Note = "This is a test company 2 for testing purpose only"
         };
 
-        public Reference ReferenceMock3 = new Reference
+        public ReferenceDTO ReferenceMock3 = new ReferenceDTO
         {
             CompanyName = "TestCompany3",
             ContactName = "TestContactName3",

@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using DTO;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,7 +9,7 @@ namespace DAL
     {
         private readonly DB Data = new DB();
 
-        public User Login(User user)
+        public UserDTO Login(UserDTO user)
         {
             using (SqlConnection conn = new SqlConnection(Data.con.ConnectionString))
             {
@@ -40,7 +40,7 @@ namespace DAL
             return user;
         }
 
-        public User GetUserInfo(User user)
+        public UserDTO GetUserInfo(UserDTO user)
         {
             using (SqlConnection conn = new SqlConnection(Data.con.ConnectionString))
             {
@@ -75,7 +75,7 @@ namespace DAL
             return user;
         }
 
-        public bool AdminCheck(User user)
+        public bool AdminCheck(UserDTO user)
         {
             bool isAdmin = false;
 
@@ -104,7 +104,7 @@ namespace DAL
             return isAdmin;
         }
 
-        public bool Registration(User user)
+        public bool Registration(UserDTO user)
         {
             bool RegistrationSuccess = false;
             using (SqlConnection conn = new SqlConnection(Data.con.ConnectionString))

@@ -1,14 +1,14 @@
-﻿using System;
+﻿using DAL.DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Models;
 
 namespace DAL.Mock
 {
     public class MockOrderList
     {
         public static MockItems Testing = new MockItems();
-        public OrderList OrderListMock = new OrderList
+        public OrderListDTO OrderListMock = new OrderListDTO
         {
             OrderID = 1,
             Amount = 2,

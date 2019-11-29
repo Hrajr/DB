@@ -7,10 +7,10 @@ namespace DAL.SQLcontext
 {
     public interface IReferenceContext
     {
-        bool AddReference(Reference reference);
+        bool AddReference(ReferenceInfo reference);
         bool RemoveReference(string id);
-        bool EditReference(Reference reference);
-        List<Reference> GetReference();
-        Reference GetReferenceByID(string id);
+        bool EditReference(ReferenceInfo reference);
+        List<ReferenceInfo> GetReference();
+        ReferenceInfo GetReferenceByID(string id);
     }
 }

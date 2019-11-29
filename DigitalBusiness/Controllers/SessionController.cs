@@ -9,7 +9,6 @@ using Logic;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Models;
 using System.Security.Claims;
 using DAL;
 
@@ -34,7 +33,7 @@ namespace DigitalBusiness.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult LoginSubmit([Bind("Password, Username")] User user)
+        public IActionResult LoginSubmit([Bind("Password, Username")] UserLogic user)
         {
             if (!ModelState.IsValid)
             {
@@ -64,7 +63,7 @@ namespace DigitalBusiness.Controllers
             await this.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
-        private async void InitUser(User user)
+        private async void InitUser(UserLogic user)
         {
             user.Admin = _userLogic.AdminCheck(user);
             var claims = new List<Claim>

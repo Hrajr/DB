@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Models
+namespace DAL.DTO
 {
-    public class Reference
+    public class ReferenceDTO
     {
         public string ID { get; set; }
         public string CompanyName { get; set; }

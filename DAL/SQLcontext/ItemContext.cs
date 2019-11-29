@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +11,7 @@ namespace DAL.SQLcontext
     {
         private readonly DB data = new DB();
 
-        public bool AddItem(Item item)
+        public bool AddItem(ItemDTO item)
         {
             bool Success = false;
             using (SqlConnection conn = new SqlConnection(data.con.ConnectionString))
@@ -121,9 +121,9 @@ namespace DAL.SQLcontext
         //    return Success;
         //}
 
-        public List<Item> GetItem()
+        public List<ItemDTO> GetItem()
         {
-            List<Item> CollectedItems = new List<Item>();
+            List<ItemDTO> CollectedItems = new List<ItemDTO>();
             using (SqlConnection conn = new SqlConnection(data.con.ConnectionString))
             {
                 try
@@ -137,7 +137,7 @@ namespace DAL.SQLcontext
 
                     while (reader.Read())
                     {
-                        var item = new Item
+                        var item = new ItemDTO
                         {
                             ItemID = reader["ID"].ToString(),
                             Description = reader["Description"].ToString(),
@@ -158,9 +158,9 @@ namespace DAL.SQLcontext
             return CollectedItems;
         }
 
-        public Item GetItemByID(string id)
+        public ItemDTO GetItemByID(string id)
         {
-            var item = new Item()
+            var item = new ItemDTO()
             {
                 ItemID = id
             };

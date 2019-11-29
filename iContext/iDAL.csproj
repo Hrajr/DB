@@ -8,4 +8,8 @@
     <PackageReference Include="GitHub" Version="1.16.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Models\InfoContainer.csproj" />
+  </ItemGroup>
+
 </Project>

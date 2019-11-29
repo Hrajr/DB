@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +8,6 @@ namespace DigitalBusiness.Models
 {
     public class LoginViewModel
     {
-        public User ActiveUser { get; set; }
+        public UserLogic ActiveUser { get; set; }
     }
 }

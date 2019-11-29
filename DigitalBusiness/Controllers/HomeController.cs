@@ -9,7 +9,6 @@ using Logic;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Models;
 using System.Security.Claims;
 using DAL;
 
@@ -53,7 +52,7 @@ namespace DigitalBusiness.Controllers
         [HttpGet]
         public IActionResult Profile()
         {
-            var ActiveUser = new User { UserID = User.Identity.Name };
+            var ActiveUser = new UserLogic { UserID = User.Identity.Name };
             var model = new LoginViewModel
             {
                 ActiveUser = _userLogic.GetUserInfo(ActiveUser)
@@ -71,7 +70,7 @@ namespace DigitalBusiness.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult RegistrationForm([Bind("Username, Password, Firstname, Lastname, Address, Zipcode, Place, Phone, Email")] User user)
+        public IActionResult RegistrationForm([Bind("Username, Password, Firstname, Lastname, Address, Zipcode, Place, Phone, Email")] UserLogic user)
         {
             if (!ModelState.IsValid || !_userLogic.Registration(user))
             { return View("Registration"); }            

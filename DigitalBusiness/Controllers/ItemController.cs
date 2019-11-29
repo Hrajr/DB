@@ -9,7 +9,6 @@ using Logic;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 
@@ -17,11 +16,11 @@ namespace DigitalBusiness.Controllers
 {
     public class ItemController : Controller
     {
-        private readonly ItemLogic _itemLogic;
+        private readonly Item _itemLogic;
         private ReferenceViewModel model = new ReferenceViewModel();
         public ItemController()
         {
-            _itemLogic = new ItemLogic();
+            _itemLogic = new Item();
         }
 
         [HttpGet]

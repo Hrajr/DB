@@ -1,5 +1,4 @@
-﻿using Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,8 +19,12 @@ namespace DigitalBusiness.Models
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Address { get; set; }
+        [Required(ErrorMessage = "Please enter a valid phonenumber!")]
+        [DataType(DataType.PostalCode)]
         public string Zipcode { get; set; }
         public string Place { get; set; }
+        [Required(ErrorMessage = "Please enter a valid phonenumber!")]
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
         [Required(ErrorMessage = "Your email is required!")]
         [DataType(DataType.EmailAddress, ErrorMessage = "Please enter a valid Email!")]

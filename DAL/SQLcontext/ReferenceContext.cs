@@ -1,5 +1,5 @@
-﻿using DAL.Mock;
-using Models;
+﻿using DAL.DTO;
+using DAL.Mock;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,7 +12,7 @@ namespace DAL.SQLcontext
     {
         private readonly DB data = new DB();
 
-        public bool AddReference(Reference reference)
+        public bool AddReference(ReferenceDTO reference)
         {
             bool Success = false;
             using (SqlConnection conn = new SqlConnection(data.con.ConnectionString))
@@ -81,7 +81,7 @@ namespace DAL.SQLcontext
             } return Success;
         }
 
-        public bool EditReference(Reference reference)
+        public bool EditReference(ReferenceDTO reference)
         {
             bool Success = false;
             using (SqlConnection conn = new SqlConnection(data.con.ConnectionString))
@@ -130,9 +130,9 @@ namespace DAL.SQLcontext
             return Success;
         }
 
-        public List<Reference> GetReference()
+        public List<ReferenceDTO> GetReference()
         {
-            List<Reference> CollectedReferences = new List<Reference>();            
+            List<ReferenceDTO> CollectedReferences = new List<ReferenceDTO>();            
             using (SqlConnection conn = new SqlConnection(data.con.ConnectionString))
             {
                 try
@@ -146,7 +146,7 @@ namespace DAL.SQLcontext
 
                     while (reader.Read())
                     {
-                        var reference = new Reference
+                        var reference = new ReferenceDTO
                         {
                             ID = reader["ID"].ToString(),
                             CompanyName = reader["CompanyName"].ToString(),
@@ -178,9 +178,9 @@ namespace DAL.SQLcontext
             return CollectedReferences;
         }
 
-        public Reference GetReferenceByID(string id)
+        public ReferenceDTO GetReferenceByID(string id)
         {
-            var reference = new Reference()
+            var reference = new ReferenceDTO()
             {
                 ID = id
             };

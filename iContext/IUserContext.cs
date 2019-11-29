@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DTO;
+using Models;
 
 namespace DAL
 {
     public interface IUserContext
     {
-        UserDTO Login(UserDTO user);
-        bool AdminCheck(UserDTO user);
-        bool Registration(UserDTO user);
-        UserDTO GetUserInfo(UserDTO user);
+        UserInfo Login(UserInfo user);
+        bool AdminCheck(UserInfo user);
+        bool Registration(UserInfo user);
+        UserInfo GetUserInfo(UserInfo user);
     }
 }

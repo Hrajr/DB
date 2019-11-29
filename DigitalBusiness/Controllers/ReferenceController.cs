@@ -9,7 +9,6 @@ using Logic;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 
@@ -46,7 +45,7 @@ namespace DigitalBusiness.Controllers
         {
             if (!ModelState.IsValid)
             { return View("AddReference"); }
-            var newReference = new Reference
+            var newReference = new ReferenceLogic
             {
                 CompanyName = formCollection["CompanyName"],
                 ContactName = formCollection["ContactName"],

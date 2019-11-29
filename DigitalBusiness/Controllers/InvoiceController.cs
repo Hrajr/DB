@@ -49,7 +49,7 @@ namespace DigitalBusiness.Controllers
         {
             if (!ModelState.IsValid)
             { return View("AddInvoice"); }
-            var newInvoice = new Invoice
+            var newInvoice = new InvoiceLogic
             {
                 //CompanyName = formCollection["CompanyName"],
                 //ContactName = formCollection["ContactName"],
@@ -68,8 +68,8 @@ namespace DigitalBusiness.Controllers
                 //Date = DateTime.Now,
                 //Note = formCollection["Note"],
             };
-            if (_invoiceLogic.AddInvoice(newInvoice))
-            { return View("AddInvoice"); }
+            //if (_invoiceLogic.AddInvoice(newInvoice))
+            //{ return View("AddInvoice"); }
             return View("Invoice");
         }
 

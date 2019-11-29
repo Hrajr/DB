@@ -1,4 +1,4 @@
-﻿using Models;
+﻿using DAL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +11,7 @@ namespace DAL.SQLcontext
     {
         private readonly  DB data = new DB();
 
-        public bool AddInvoice(Invoice invoice)
+        public bool AddInvoice(InvoiceDTO invoice)
         {
             bool Success = false;
             using (SqlConnection conn = new SqlConnection(data.con.ConnectionString))
@@ -68,7 +68,7 @@ namespace DAL.SQLcontext
             return Success;
         }
 
-        public bool EditInvoice(Invoice invoice)
+        public bool EditInvoice(InvoiceDTO invoice)
         {
             bool Success = false;
             using (SqlConnection conn = new SqlConnection(data.con.ConnectionString))
@@ -101,9 +101,9 @@ namespace DAL.SQLcontext
             return Success;
         }
 
-        public List<Invoice> GetInvoice()
+        public List<InvoiceDTO> GetInvoice()
         {
-            List<Invoice> CollectedReferences = new List<Invoice>();
+            List<InvoiceDTO> CollectedReferences = new List<InvoiceDTO>();
             using (SqlConnection conn = new SqlConnection(data.con.ConnectionString))
             {
                 try
@@ -117,7 +117,7 @@ namespace DAL.SQLcontext
 
                     while (reader.Read())
                     {
-                        var invoice = new Invoice
+                        var invoice = new InvoiceDTO
                         {
                             //ID = reader["ID"].ToString(),
                             //CompanyName = reader["CompanyName"].ToString(),
@@ -149,9 +149,9 @@ namespace DAL.SQLcontext
             return CollectedReferences;
         }
 
-        public Invoice GetInvoiceByID(string id)
+        public InvoiceDTO GetInvoiceByID(string id)
         {
-            var invoice = new Invoice();
+            var invoice = new InvoiceDTO();
             using (SqlConnection conn = new SqlConnection(data.con.ConnectionString))
             {
                 try
